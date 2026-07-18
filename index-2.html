@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meals On Wheels — Hungry? 20 Minutes. That's It.</title>
+<meta name="description" content="Order food online and get it delivered in 20 minutes — routed to the nearest kitchen that has it hot and ready." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <svg class="flame-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E4572E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.5 14.5A2.5 2.5 0 0 0 11 17a2.5 2.5 0 0 0 2.5-2.5c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7.5 7.5 0 1 1-15 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5"/>
+        </svg>
+        <span>MEALS ON WHEELS</span>
+      </div>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF6EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3D5A45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Delivering near you</span>
+      </div>
+      <h1>HUNGRY?<br><span class="accent">20 MINUTES.</span><br>THAT'S IT.</h1>
+      <p>We route every order to the nearest kitchen that's got it hot and ready — not the closest name, the closest plate.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FILTERS ===================== -->
+  <div class="filters-wrap">
+    <div class="filters">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="bestseller">Bestsellers</button>
+      <button class="filter-chip" data-filter="veg">Vegetarian</button>
+    </div>
+  </div>
+
+  <!-- ===================== MENU GRID ===================== -->
+  <main class="menu-wrap">
+    <div class="menu-grid" id="menuGrid"></div>
+  </main>
+
+  <!-- ===================== STICKY CART BAR ===================== -->
+  <button class="cart-bar" id="cartBar" hidden>
+    <span id="cartBarSummary">0 items · ₦0</span>
+    <span class="cart-bar-cta">View cart
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FBF6EE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </span>
+  </button>
+
+  <!-- ===================== CART DRAWER ===================== -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden>
+    <div class="drawer" id="drawer">
+      <div class="drawer-head">
+        <h2>Your order</h2>
+        <button class="icon-btn" id="closeCart" aria-label="Close cart">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A69A85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
+      <div class="drawer-foot" id="drawerFoot" hidden>
+        <div class="drawer-total">
+          <span>Total</span>
+          <span id="drawerTotal">₦0</span>
+        </div>
+        <button class="place-order-btn" id="placeOrderBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span id="placeOrderLabel">PLACE ORDER · ₦0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONFIRMATION SCREEN ===================== -->
+  <div class="confirm-screen" id="confirmScreen" hidden>
+    <div class="confirm-inner">
+      <div class="ring-wrap">
+        <svg id="countdownRing" width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="55" fill="none" stroke="#3A342A" stroke-width="8" />
+          <circle id="ringProgress" cx="60" cy="60" r="55" fill="none" stroke="#E4572E" stroke-width="8" stroke-linecap="round" transform="rotate(-90 60 60)" />
+        </svg>
+        <span class="ring-time" id="ringTime">20:00</span>
+      </div>
+      <h1>On its way.</h1>
+      <p>Your order is being prepared and routed to the nearest kitchen. Track the clock — we promise 20 minutes or less.</p>
+
+      <div class="confirm-card" id="confirmCard"></div>
+
+      <button class="place-order-btn full" id="newOrderBtn">PLACE ANOTHER ORDER</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
